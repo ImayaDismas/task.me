@@ -20,7 +20,7 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
         //if user is already logged in open the home activity
         if (SharedPrefManager.getInstance(this).isLoggedIn()) {
             finish();
-            startActivity(new Intent(this, HomeActivity.class));
+            startActivity(new Intent(this, NavigationActivity.class));
         }
 
 //        initialize the variables inputs

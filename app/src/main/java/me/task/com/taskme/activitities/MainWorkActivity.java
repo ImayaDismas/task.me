@@ -21,7 +21,7 @@ public class MainWorkActivity extends AppCompatActivity implements View.OnClickL
         //if user is already logged in open the home activity
         if (SharedPrefManager.getInstance(this).isLoggedIn()) {
             finish();
-            startActivity(new Intent(this, HomeActivity.class));
+            startActivity(new Intent(this, NavigationActivity.class));
         }
 
 //        initialize the variables with inputs

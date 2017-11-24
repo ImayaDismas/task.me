@@ -72,7 +72,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
                     SharedPrefManager.getInstance(getApplicationContext()).professionalLogin(response.body().getProfessional());
 //                    finish this and invoke the home activity if successful
                     finish();
-                    startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                    startActivity(new Intent(getApplicationContext(), NavigationActivity.class));
                 } else {
                     Toast.makeText(getApplicationContext(), String.valueOf(response.body().getMessage()), Toast.LENGTH_LONG).show();
                 }

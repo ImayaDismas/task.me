@@ -18,6 +18,8 @@ public class SharedPrefManager {
 
     private static final String KEY_PROFESSIONAL_ID = "keyprofessionalid";
     private static final String KEY_PROFESSIONAL_NAME = "keyprofessionalname";
+    private static final String KEY_PROFESSIONAL_FIRST_NAME = "keyprofessionalfirstname";
+    private static final String KEY_PROFESSIONAL_LAST_NAME = "keyprofessionallastname";
     private static final String KEY_PROFESSIONAL_EMAIL = "keyprofessionalemail";
     private static final String KEY_PROFESSIONAL_TOKEN = "keyprofessionaltoken";
 
@@ -37,6 +39,8 @@ public class SharedPrefManager {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putInt(KEY_PROFESSIONAL_ID, professional.getProff_id());
         editor.putString(KEY_PROFESSIONAL_NAME, professional.getProff_name());
+        editor.putString(KEY_PROFESSIONAL_FIRST_NAME, professional.getFirst_name());
+        editor.putString(KEY_PROFESSIONAL_LAST_NAME, professional.getLast_name());
         editor.putString(KEY_PROFESSIONAL_TOKEN, professional.getApi_key());
         editor.putString(KEY_PROFESSIONAL_EMAIL, professional.getEmail());
         editor.apply();
@@ -55,6 +59,8 @@ public class SharedPrefManager {
         return new Professional(
                 sharedPreferences.getInt(KEY_PROFESSIONAL_ID, 0),
                 sharedPreferences.getString(KEY_PROFESSIONAL_NAME, null),
+                sharedPreferences.getString(KEY_PROFESSIONAL_FIRST_NAME, null),
+                sharedPreferences.getString(KEY_PROFESSIONAL_LAST_NAME, null),
                 sharedPreferences.getString(KEY_PROFESSIONAL_EMAIL, null),
                 sharedPreferences.getString(KEY_PROFESSIONAL_TOKEN, null)
         );

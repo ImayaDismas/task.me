@@ -39,12 +39,14 @@ public class Professional {
         this.created_at = created_at;
     }
 
-    public Professional(int proff_id, String proff_name, String email, String api_key)
+    public Professional(int proff_id, String proff_name, String first_name, String last_name, String email, String api_key)
     {
         this.proff_id = proff_id;
         this.proff_name = proff_name;
-        this.api_key = api_key;
+        this.first_name = first_name;
+        this.last_name = last_name;
         this.email = email;
+        this.api_key = api_key;
     }
     public int getProff_id() {
         return proff_id;
