@@ -9,14 +9,14 @@ import android.widget.Button;
 import me.task.com.taskme.R;
 import me.task.com.taskme.helper.SharedPrefManager;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class MainHireActivity extends AppCompatActivity implements View.OnClickListener{
 
-//    declare the variables
+    //    declare the variables
     private Button buttonSignIn, buttonSignUp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main_hire);
 
         //if user is already logged in open the home activity
         if (SharedPrefManager.getInstance(this).isLoggedIn()) {
@@ -28,8 +28,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonSignIn = (Button) findViewById(R.id.buttonSignIn);
         buttonSignUp = (Button) findViewById(R.id.buttonSignUp);
 
-        buttonSignIn.setOnClickListener(this);
-        buttonSignUp.setOnClickListener(this);
+//        buttonSignIn.setOnClickListener(this);
+//        buttonSignUp.setOnClickListener(this);
     }
 
     @Override
@@ -50,3 +50,4 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 }
+
