@@ -3,7 +3,7 @@ package me.task.com.taskme.helper;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import me.task.com.taskme.models.User;
+import me.task.com.taskme.models.Professional;
 
 /**
  * Created by root on 11/17/17.
@@ -16,10 +16,10 @@ public class SharedPrefManager {
 
     private static final String SHARED_PREF_NAME = "taskme";
 
-    private static final String KEY_USER_ID = "keyuserid";
-    private static final String KEY_USER_NAME = "keyusername";
-    private static final String KEY_USER_EMAIL = "keyuseremail";
-    private static final String KEY_USER_TOKEN = "keyusertoken";
+    private static final String KEY_PROFESSIONAL_ID = "keyprofessionalid";
+    private static final String KEY_PROFESSIONAL_NAME = "keyprofessionalname";
+    private static final String KEY_PROFESSIONAL_EMAIL = "keyprofessionalemail";
+    private static final String KEY_PROFESSIONAL_TOKEN = "keyprofessionaltoken";
 
     private SharedPrefManager(Context context) {
         mCtx = context;
@@ -32,31 +32,31 @@ public class SharedPrefManager {
         return mInstance;
     }
 
-    public boolean userLogin(User user) {
+    public boolean professionalLogin(Professional professional) {
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putInt(KEY_USER_ID, user.getId());
-        editor.putString(KEY_USER_NAME, user.getName());
-        editor.putString(KEY_USER_EMAIL, user.getEmail());
-        editor.putString(KEY_USER_TOKEN, user.getToken());
+        editor.putInt(KEY_PROFESSIONAL_ID, professional.getProff_id());
+        editor.putString(KEY_PROFESSIONAL_NAME, professional.getProff_name());
+        editor.putString(KEY_PROFESSIONAL_TOKEN, professional.getApi_key());
+        editor.putString(KEY_PROFESSIONAL_EMAIL, professional.getEmail());
         editor.apply();
         return true;
     }
 
     public boolean isLoggedIn() {
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
-        if (sharedPreferences.getString(KEY_USER_EMAIL, null) != null)
+        if (sharedPreferences.getString(KEY_PROFESSIONAL_EMAIL, null) != null)
             return true;
         return false;
     }
 
-    public User getUser() {
+    public Professional getProfessional() {
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
-        return new User(
-                sharedPreferences.getInt(KEY_USER_ID, 0),
-                sharedPreferences.getString(KEY_USER_NAME, null),
-                sharedPreferences.getString(KEY_USER_EMAIL, null),
-                sharedPreferences.getString(KEY_USER_TOKEN, null)
+        return new Professional(
+                sharedPreferences.getInt(KEY_PROFESSIONAL_ID, 0),
+                sharedPreferences.getString(KEY_PROFESSIONAL_NAME, null),
+                sharedPreferences.getString(KEY_PROFESSIONAL_EMAIL, null),
+                sharedPreferences.getString(KEY_PROFESSIONAL_TOKEN, null)
         );
     }
 

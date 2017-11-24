@@ -11,18 +11,20 @@ import me.task.com.taskme.helper.SharedPrefManager;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
+//    declare the variables
     private Button buttonSignIn, buttonSignUp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //if user is already logged in openeing the profile activity
+        //if user is already logged in open the home activity
         if (SharedPrefManager.getInstance(this).isLoggedIn()) {
             finish();
             startActivity(new Intent(this, HomeActivity.class));
         }
 
+//        initialize the variables with inputs
         buttonSignIn = (Button) findViewById(R.id.buttonSignIn);
         buttonSignUp = (Button) findViewById(R.id.buttonSignUp);
 
@@ -32,12 +34,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
+//        check if button clicked is sign in
         if (view == buttonSignIn) {
-
+//            finish and invoke the sign in activity
+            finish();
             startActivity(new Intent(this, SignInActivity.class));
 
-        } else if (view == buttonSignUp) {
-
+        }
+//        check if button clicked is sign up
+        else if (view == buttonSignUp) {
+//            finish and invoke the sign up activity
+            finish();
             startActivity(new Intent(this, SignUpActivity.class));
 
         }
