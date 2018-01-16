@@ -54,6 +54,11 @@ public class SharedPrefManager {
         return false;
     }
 
+    public String getUserToken() {
+        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        return sharedPreferences.getString(KEY_PROFESSIONAL_TOKEN, null);
+    }
+
     public Professional getProfessional() {
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         return new Professional(

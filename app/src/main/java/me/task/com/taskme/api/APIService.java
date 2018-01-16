@@ -1,9 +1,11 @@
 package me.task.com.taskme.api;
 
+import me.task.com.taskme.helper.JobsResult;
 import me.task.com.taskme.helper.ProfessionalResult;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 /**
@@ -26,5 +28,9 @@ public interface APIService {
             @Field("email") String email,
             @Field("password") String password
     );
+//    @GET("job_posts")
+//    Call<JobsResult> getJobPosts();
 
+    @GET("job_posts")
+    Call<JobsResult> getJobPosts();
 }

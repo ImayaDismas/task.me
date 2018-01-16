@@ -26,4 +26,9 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="MyCustomTabTextAppearance" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">15sp</item>
+        <item name="textAllCaps">true</item>
+    </style>
+
 </resources>
