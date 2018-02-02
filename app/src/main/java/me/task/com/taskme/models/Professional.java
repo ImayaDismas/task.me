@@ -1,7 +1,7 @@
 package me.task.com.taskme.models;
 
 /**
- * Created by root on 11/17/17.
+ * Created by root on 2/2/18.
  */
 
 public class Professional {

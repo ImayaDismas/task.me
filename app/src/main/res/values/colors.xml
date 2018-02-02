@@ -4,4 +4,8 @@
     <color name="colorPrimaryDark">#006632</color>
     <color name="colorAccent">#51AF33</color>
     <color name="tab_inactive">#cccccc</color>
+
+
+    <color name="viewBg">#f1f5f8</color>
+    <color name="job_title">#4c4c4c</color>
 </resources>

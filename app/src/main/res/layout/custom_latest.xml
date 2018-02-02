@@ -36,7 +36,7 @@
             android:layout_toRightOf="@+id/icon"
             android:layout_below="@+id/title"
             android:padding="4dp"
-            android:text="Job Title"
+            android:text="Job Description"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textColor="@color/colorPrimaryDark" />
 
