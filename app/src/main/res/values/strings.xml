@@ -26,4 +26,9 @@
     <string name="offers">Offers</string>
     <string name="messages">Messages</string>
     <string name="find_work">Find Work</string>
+
+    <string name="action_add_favourite">Place bid</string>
+    <string name="action_play_next">Remove from saved</string>
+    <string name="backdrop_title">TASKS SAVED</string>
+    <string name="backdrop_subtitle">You have 20 saved tasks</string>
 </resources>

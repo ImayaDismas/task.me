@@ -28,8 +28,6 @@ public interface APIService {
             @Field("email") String email,
             @Field("password") String password
     );
-//    @GET("job_posts")
-//    Call<JobsResult> getJobPosts();
 
     @GET("job_posts")
     Call<JobsResult> getJobPosts();

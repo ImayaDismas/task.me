@@ -14,11 +14,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import java.io.IOException;
+import java.util.List;
+
 import me.task.com.taskme.R;
-import me.task.com.taskme.adapters.JobsRecyclerViewAdapter;
+import me.task.com.taskme.adapters.JobsViewAdapter;
 import me.task.com.taskme.api.APIService;
 import me.task.com.taskme.api.APIUrl;
 import me.task.com.taskme.helper.JobsResult;
+import me.task.com.taskme.helper.SharedPrefManager;
+import me.task.com.taskme.models.JobPosts;
+import okhttp3.Interceptor;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -98,25 +106,24 @@ public class LatestFragment extends Fragment {
 
         //        initialze the retrofit builder
 
-//        OkHttpClient httpClient = new OkHttpClient.Builder()
-//                .addInterceptor(new Interceptor() {
-//                    @Override
-//                    public okhttp3.Response intercept(Chain chain) throws IOException {
-//                        Request.Builder ongoing = chain.request().newBuilder();
-//                        ongoing.addHeader("Accept", "application/json;versions=1");
-//                        if (SharedPrefManager.getInstance(getActivity().getApplicationContext()).isLoggedIn()) {
-//                            ongoing.addHeader("Authorization", "token " + SharedPrefManager.getInstance(getActivity().getApplicationContext()).getUserToken());
-//                        }
-//                        return chain.proceed(ongoing.build());
-//                    }
-//                })
-//                .build();
-
-//        .client(httpClient)
+        OkHttpClient httpClient = new OkHttpClient.Builder()
+                .addInterceptor(new Interceptor() {
+                    @Override
+                    public okhttp3.Response intercept(Chain chain) throws IOException {
+                        Request.Builder ongoing = chain.request().newBuilder();
+                        ongoing.addHeader("Accept", "application/json;versions=1");
+                        if (SharedPrefManager.getInstance(getActivity().getApplicationContext()).isLoggedIn()) {
+                            ongoing.addHeader("Authorization",  SharedPrefManager.getInstance(getActivity().getApplicationContext()).getUserToken());
+                        }
+                        return chain.proceed(ongoing.build());
+                    }
+                })
+                .build();
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(APIUrl.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
+                .client(httpClient)
                 .build();
 
 //        initialize the api servive created
@@ -129,13 +136,15 @@ public class LatestFragment extends Fragment {
             @Override
             public void onResponse(Call<JobsResult> call, Response<JobsResult> response) {
                 progressDialog.dismiss();
-                Log.e("RESPONSE", String.valueOf(response.body()));
 //                check if error is true or false
                 if (!response.body().getError()) {
 //                    display the message if the post is successful
                     Toast.makeText(getActivity(), String.valueOf(response.body().getMessage()), Toast.LENGTH_LONG).show();
+
+//                    get job posts
+                    List<JobPosts> jobPosts = response.body().getJobPosts();
                     // Create the adapter to convert the array to views
-                    JobsRecyclerViewAdapter adapter = new JobsRecyclerViewAdapter(getActivity(), response.body().getJobPosts());
+                    JobsViewAdapter adapter = new JobsViewAdapter(getActivity(), jobPosts);
 
                     // Attach the adapter to a ListView
                     latest_list.setAdapter(adapter);

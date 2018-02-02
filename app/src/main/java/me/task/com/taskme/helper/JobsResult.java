@@ -2,6 +2,8 @@ package me.task.com.taskme.helper;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 import me.task.com.taskme.models.JobPosts;
 
 /**
@@ -16,18 +18,7 @@ public class JobsResult {
     private String message;
 
     @SerializedName("job_posts")
-    private JobPosts jobPosts;
-
-    public JobsResult(Boolean error, String message, JobPosts jobPosts) {
-        this.error = error;
-        this.message = message;
-        this.jobPosts = jobPosts;
-    }
-
-    public JobsResult(Boolean error, String message) {
-        this.error = error;
-        this.message = message;
-    }
+    private List<JobPosts> jobPosts;
 
     public Boolean getError() {
         return error;
@@ -37,7 +28,19 @@ public class JobsResult {
         return message;
     }
 
-    public JobPosts getJobPosts() {
+    public List<JobPosts> getJobPosts() {
         return jobPosts;
+    }
+
+    public void setError(Boolean error) {
+        this.error = error;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public void setJobPosts(List<JobPosts> jobPosts) {
+        this.jobPosts = jobPosts;
     }
 }
